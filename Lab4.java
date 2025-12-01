@@ -1,11 +1,10 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-// Класс для узла дерева
 class Node1 {
-    int a;      // Значение узла (data)
-    Node1 b;     // Левый потомок (left)
-    Node1 c;     // Правый потомок (right)
+    int a;
+    Node1 b;
+    Node1 c;
 
     public Node1(int d) {
         a = d;
@@ -18,9 +17,6 @@ public class Lab4 {
 
     Node1 root;
 
-    // --- ЗАДАНИЕ 1: Обходы и высота ---
-
-    // Прямой порядок (PreOrder)
     void preOrder(Node1 a) {
         if (a == null) return;
         System.out.print(a.a + " ");
@@ -28,7 +24,6 @@ public class Lab4 {
         preOrder(a.c);
     }
 
-    // Центрированный порядок (InOrder)
     void inOrder(Node1 a) {
         if (a == null) return;
         inOrder(a.b);
@@ -36,7 +31,6 @@ public class Lab4 {
         inOrder(a.c);
     }
 
-    // Обратный порядок (PostOrder)
     void postOrder(Node1 a) {
         if (a == null) return;
         postOrder(a.b);
@@ -44,7 +38,6 @@ public class Lab4 {
         System.out.print(a.a + " ");
     }
 
-    // Поуровневый порядок (LevelOrder)
     void levelOrder(Node1 a) {
         if (a == null) return;
         Queue<Node1> b = new LinkedList<>();
@@ -57,7 +50,6 @@ public class Lab4 {
         }
     }
 
-    // Вычисление высоты дерева
     int height(Node1 a) {
         if (a == null) return 0;
         int b = height(a.b);
@@ -66,28 +58,18 @@ public class Lab4 {
         else return c + 1;
     }
 
-    // --- ЗАДАНИЕ 2: Полное бинарное дерево ---
-
-    // Проверка, является ли дерево полным (Full Binary Tree)
     boolean isFull(Node1 a) {
-        // Если дерево пустое, оно считается полным
         if (a == null) return true;
 
-        // Если это лист (нет детей)
         if (a.b == null && a.c == null) return true;
 
-        // Если есть оба ребенка, проверяем дальше
         if (a.b != null && a.c != null) {
             return isFull(a.b) && isFull(a.c);
         }
 
-        // Если есть только один ребенок -> false
         return false;
     }
 
-    // --- ЗАДАНИЕ 3: Бинарное дерево поиска (BST) ---
-
-    // Вставка в BST
     Node1 insertBST(Node1 a, int b) {
         if (a == null) {
             a = new Node1(b);
@@ -101,8 +83,6 @@ public class Lab4 {
         return a;
     }
 
-    // --- ЗАДАНИЕ 4: Сбалансированное дерево из массива ---
-
     Node1 sortedArrayToBST(int[] a, int b, int c) {
         if (b > c) return null;
 
@@ -115,9 +95,6 @@ public class Lab4 {
         return e;
     }
 
-    // --- ЗАДАНИЕ 5: Вставка и Удаление (Level Order) ---
-
-    // Вставка в первую свободную позицию (Level Order Insert)
     void insertLevelOrder(int a) {
         if (root == null) {
             root = new Node1(a);
@@ -145,7 +122,6 @@ public class Lab4 {
         }
     }
 
-    // Удаление узла с заменой на самый глубокий правый
     void delete(int a) {
         if (root == null) return;
         if (root.b == null && root.c == null) {
@@ -153,14 +129,12 @@ public class Lab4 {
             return;
         }
 
-        Node1 b = null; // Узел, который надо удалить
-        Node1 c = null; // Самый глубокий узел
-
+        Node1 b = null;
+        Node1 c = null;
 
         Queue<Node1> e = new LinkedList<>();
         e.add(root);
 
-        // 1. Ищем узел для удаления и самый последний узел
         while (!e.isEmpty()) {
             c = e.poll();
             if (c.a == a) b = c;
@@ -169,9 +143,9 @@ public class Lab4 {
         }
 
         if (b != null) {
-            int f = c.a; // Сохраняем значение самого глубокого
-            deleteDeepest(root, c); // Удаляем самый глубокий узел
-            b.a = f; // Заменяем значение удаляемого узла
+            int f = c.a; 
+            deleteDeepest(root, c);
+            b.a = f;
         }
     }
 
@@ -199,7 +173,6 @@ public class Lab4 {
         }
     }
 
-    // --- MAIN ---
     public static void main(String[] args) {
         Lab4 tree = new Lab4();
 
@@ -222,7 +195,6 @@ public class Lab4 {
 
         System.out.println("\n--- 2. Проверка на Full Binary Tree ---");
         System.out.println("Является полным? " + tree.isFull(tree.root));
-        // (Сейчас оно полное: 1 имеет детей 2,3; 2 имеет детей 4,5; 3,4,5 - листы)
 
         System.out.println("\n--- 3. Построение BST ---");
         Lab4 bst = new Lab4();
@@ -255,7 +227,7 @@ public class Lab4 {
         opTree.levelOrder(opTree.root);
         System.out.println();
 
-        opTree.delete(20); // Удаляем 20, на его место встанет 50 (самый глубокий)
+        opTree.delete(20);
 
         System.out.print("После удаления 20: ");
         opTree.levelOrder(opTree.root);
