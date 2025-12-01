@@ -176,7 +176,7 @@ public class Lab4 {
     public static void main(String[] args) {
         Lab4 tree = new Lab4();
 
-        System.out.println("--- 1. Обходы и высота ---");
+        System.out.println("1. Обходы и высота");
         tree.root = new Node1(1);
         tree.root.b = new Node1(2);
         tree.root.c = new Node1(3);
@@ -193,10 +193,10 @@ public class Lab4 {
 
         System.out.println("Высота дерева: " + tree.height(tree.root));
 
-        System.out.println("\n--- 2. Проверка на Full Binary Tree ---");
+        System.out.println("\n2. Проверка на Full Binary Tree");
         System.out.println("Является полным? " + tree.isFull(tree.root));
 
-        System.out.println("\n--- 3. Построение BST ---");
+        System.out.println("\n3. Построение BST");
         Lab4 bst = new Lab4();
         bst.root = bst.insertBST(null, 50);
         bst.insertBST(bst.root, 30);
@@ -207,7 +207,7 @@ public class Lab4 {
         bst.inOrder(bst.root);
         System.out.println();
 
-        System.out.println("\n--- 4. Сбалансированное дерево из массива ---");
+        System.out.println("\n4. Сбалансированное дерево из массива");
         int[] arr = {1, 2, 3, 4, 5, 6, 7};
         Lab4 balancedTree = new Lab4();
         balancedTree.root = balancedTree.sortedArrayToBST(arr, 0, arr.length - 1);
@@ -215,7 +215,7 @@ public class Lab4 {
         balancedTree.preOrder(balancedTree.root);
         System.out.println();
 
-        System.out.println("\n--- 5. Вставка и удаление (Level Order) ---");
+        System.out.println("\n5. Вставка и удаление (Level Order)");
         Lab4 opTree = new Lab4();
         opTree.insertLevelOrder(10);
         opTree.insertLevelOrder(20);
@@ -235,3 +235,4 @@ public class Lab4 {
     }
 
 }
+
