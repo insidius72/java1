@@ -155,7 +155,7 @@ public class Lab4 {
 
         Node1 b = null; // Узел, который надо удалить
         Node1 c = null; // Самый глубокий узел
-        // Node1 d = null; // Родитель самого глубокого узла (для удаления связи) - не используется
+
 
         Queue<Node1> e = new LinkedList<>();
         e.add(root);
@@ -175,17 +175,11 @@ public class Lab4 {
         }
     }
 
-    // Вспомогательный метод: удалить конкретный глубокий узел
     void deleteDeepest(Node1 a, Node1 b) {
         Queue<Node1> c = new LinkedList<>();
         c.add(a);
         while(!c.isEmpty()) {
             Node1 d = c.poll();
-            // Этот блок кода не должен выполняться, так как 'b' никогда не будет корнем очереди
-            // if (d == b) {
-            //     d = null;
-            //     return;
-            // }
             if (d.c != null) {
                 if (d.c == b) {
                     d.c = null;
@@ -210,7 +204,6 @@ public class Lab4 {
         Lab4 tree = new Lab4();
 
         System.out.println("--- 1. Обходы и высота ---");
-        // Создаем простое дерево вручную для теста
         tree.root = new Node1(1);
         tree.root.b = new Node1(2);
         tree.root.c = new Node1(3);
@@ -268,4 +261,5 @@ public class Lab4 {
         opTree.levelOrder(opTree.root);
         System.out.println();
     }
+
 }
