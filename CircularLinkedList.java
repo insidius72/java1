@@ -8,7 +8,6 @@ class Node2 {
     }
 }
 
-
 public class CircularLinkedList {
     Node2 h = null; 
     Node2 t = null;
@@ -100,7 +99,7 @@ public class CircularLinkedList {
         Node2 h2 = current.n;
         current.n = h1;
         t.n = h2;
-        System.out.println("--- Разделение выполнено ---");
+        System.out.println("Разделение выполнено");
         System.out.print("Список 1: ");
         printListFromNode(h1);
         System.out.print("Список 2: ");
