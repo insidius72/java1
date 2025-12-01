@@ -1,37 +1,31 @@
-// Класс для одного узла
 class Node {
-    int a;              // данные (число)
-    Node nextUzel;      // ссылка на следующий узел
+    int a;             
+    Node nextUzel;      
 
-    // Конструктор
     Node(int c) {
         this.a = c;
         this.nextUzel = null;
     }
 }
 
-// Класс самого списка
 class SinglyLinkedList {
-    Node firstUzel; // первый узел списка (голова)
+    Node firstUzel; 
 
-    // 1. Добавление элемента в начало
     public void addFirst(int c) {
-        Node newUzel = new Node(c); // создаем новый узел
+        Node newUzel = new Node(c); 
         newUzel.nextUzel = firstUzel;
         firstUzel = newUzel;
     }
 
-    // 2. Добавление элемента в конец
     public void addLast(int c) {
-        Node newUzel = new Node(c); // создаем новый узел
+        Node newUzel = new Node(c); 
 
-        // Если список пуст
+
         if (firstUzel == null) {
             firstUzel = newUzel;
             return;
         }
 
-        // Используем b как бегунок для поиска конца
         Node b = firstUzel;
         while (b.nextUzel != null) {
             b = b.nextUzel;
@@ -39,7 +33,6 @@ class SinglyLinkedList {
         b.nextUzel = newUzel;
     }
 
-    // 3. Удаление первого элемента
     public void removeFirst() {
         if (firstUzel == null) {
             return;
@@ -47,7 +40,6 @@ class SinglyLinkedList {
         firstUzel = firstUzel.nextUzel;
     }
 
-    // 4. Удаление последнего элемента
     public void removeLast() {
         if (firstUzel == null) {
             return;
@@ -59,20 +51,18 @@ class SinglyLinkedList {
         }
 
         Node b = firstUzel;
-        // Ищем предпоследний элемент
+
         while (b.nextUzel.nextUzel != null) {
             b = b.nextUzel;
         }
         b.nextUzel = null;
     }
 
-    // 5. Удаление элемента по значению c
     public void remove(int c) {
         if (firstUzel == null) {
             return;
         }
 
-        // Если нужно удалить голову
         if (firstUzel.a == c) {
             firstUzel = firstUzel.nextUzel;
             return;
@@ -80,16 +70,14 @@ class SinglyLinkedList {
 
         Node b = firstUzel;
         while (b.nextUzel != null) {
-            // Проверяем данные следующего узла
             if (b.nextUzel.a == c) {
-                b.nextUzel = b.nextUzel.nextUzel; // Удаляем
+                b.nextUzel = b.nextUzel.nextUzel; 
                 return;
             }
             b = b.nextUzel;
         }
     }
 
-    // 6. Проверка наличия элемента c
     public boolean contains(int c) {
         Node b = firstUzel;
         while (b != null) {
@@ -101,9 +89,8 @@ class SinglyLinkedList {
         return false;
     }
 
-    // 7. Возврат размера списка
     public int size() {
-        int e = 0; // Счетчик (использую e, так как c занято аргументом)
+        int e = 0; 
         Node b = firstUzel;
         while (b != null) {
             e++;
@@ -112,7 +99,6 @@ class SinglyLinkedList {
         return e;
     }
 
-    // 8. Проверка на пустоту
     public boolean isEmpty() {
         if (firstUzel == null) {
             return true;
@@ -121,7 +107,6 @@ class SinglyLinkedList {
         }
     }
 
-    // 9. Вывод всех элементов списка
     public void display() {
         Node b = firstUzel;
         while (b != null) {
@@ -131,13 +116,11 @@ class SinglyLinkedList {
         System.out.println("null");
     }
 
-    // 10. Очистка списка
     public void clear() {
         firstUzel = null;
     }
 }
 
-// Главный класс для проверки
 public class с1 {
     public static void main(String[] args) {
         SinglyLinkedList list = new SinglyLinkedList();
@@ -149,7 +132,7 @@ public class с1 {
         list.display();
 
         System.out.println("Тест удаления");
-        list.remove(20); // Удаляем число 20
+        list.remove(20);
         list.display();
     }
 }
